@@ -12,11 +12,17 @@ opt.cursorline = true
 opt.relativenumber = false
 opt.number = true
 
--- wrap lines (don't break lines)
-opt.wrap = false 
-
 -- clipboard
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+
+
+-- IDENTATION
+opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+opt.shiftwidth = 2 -- 2 spaces for indent width
+opt.expandtab = true -- expand tab to spaces
+opt.autoindent = true -- copy indent from current line when starting new one
+
+opt.wrap = false
 
 -- APARANCE --
 
