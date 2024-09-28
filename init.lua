@@ -1,2 +1,2 @@
-require('press.core.options')
-require('press.lazy')
+require("config")
+require("config.lazy")
