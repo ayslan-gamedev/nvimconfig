@@ -7,58 +7,63 @@ return {
     },
     config = function()
       require("mason").setup({
-        ui = { icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗"
-        }}
-      })
-
-      require("mason-lspconfig").setup({
-        -- all languages servers to be load
-        ensure_installed = {
-          "clangd",
-          "lua_ls",
+        ui = {
+          icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+          }
         }
       })
 
       require("mason-tool-installer").setup({
         ensure_installed = {
-          "clang-format",  -- Formatador para C/C++
-          "stylua", -- formatador para lua
+          "clang-format",  -- Formatter for C/C++
+          "stylua",        -- Formatter for Lua
         }
       })
     end
   },
   {
-
     "neovim/nvim-lspconfig",
-      config = function()
-        local lsp = require'lspconfig'
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim"
+    },
+    config = function()
+      local lsp = require'lspconfig'
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-        require('mason-lspconfig').setup_handlers({
-          -- default handler for installed servers
-          function(server_name)
-            lsp[server_name].setup({
-              capabilities = capabilities,
-            })
-          end,
-          ["lua_ls"] = function()
-            -- configure lua server (with special settings)
-            lsp["lua_ls"].setup({
-              capabilities = capabilities,
-              settings = {
-                Lua = {
-                  -- make the language server recognize "vim" global
-                  diagnostics = { globals = { "vim" },},
-                  completion = { callSnippet = "Replace",},
-                },
+      require('mason-lspconfig').setup_handlers({
+        -- Default handler for installed servers
+        function(server_name)
+          lsp[server_name].setup({
+            capabilities = capabilities,
+          })
+        end,
+        ["lua_ls"] = function()
+          lsp["lua_ls"].setup({
+            capabilities = capabilities,
+            settings = {
+              Lua = {
+                diagnostics = { globals = { "vim" }, },
+                completion = { callSnippet = "Replace", },
               },
-            })
-          end
-
-          -- insert here all languages servers
+            },
+          })
+        end,
+        ["clangd"] = function()
+          lsp["clangd"].setup({
+            capabilities = capabilities,
+            settings = {
+              clangd = {
+                cmd = { "clangd", "--background-index" },
+              },
+            },
+          })
+        end,
+        -- Add more language servers here if needed
       })
     end
   }
 }
+
