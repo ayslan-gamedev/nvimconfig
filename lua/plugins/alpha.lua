@@ -13,17 +13,20 @@ return {
       "██████╔╝██████╔╝█████╗  ███████╗███████╗    ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║",
       "██╔═══╝ ██╔══██╗██╔══╝  ╚════██║╚════██║    ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║",
       "██║     ██║  ██║███████╗███████║███████║    ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║",
-      "╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝"," ", 
-      "                                                       made by Press Start (Ayslan V. Fontes)", 
-      " ", " ", " ", " ", " ", " ", " "," ",
+      "╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝"," ",
+      "                                                       made by Press Start (Ayslan V. Fontes)",
+      " ", " ", " ", " ", " ", " ",
     }
-  
 
     -- Set menu
     dashboard.section.buttons.val = {
-      dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
-      dashboard.button("q", "  > Quit NVIM", "<cmd>qa<CR>"),
-    }
+    dashboard.button("e", "ICON > New File", "<cmd>ene<CR>"),
+    dashboard.button("SPC ee", "ICON  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
+    dashboard.button("SPC ff", "ICON > Find File", "<cmd>Telescope find_files<CR>"),
+    dashboard.button("SPC fs", "ICON  > Find Word", "<cmd>Telescope live_grep<CR>"),
+    dashboard.button("SPC wr", "ICON> Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
+    dashboard.button("q", "ICON  > Quit NVIM", "<cmd>qa<CR>")
+}
 
     -- Send config to alpha
     alpha.setup(dashboard.opts)

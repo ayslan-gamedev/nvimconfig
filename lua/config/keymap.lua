@@ -4,7 +4,7 @@ local km = vim.keymap
 
 
 -- save 
-km.set('n', '<leader>s', ':w<CR>', { noremap = true, silent = true })
+--km.set('n', '<leader>s', ':w<CR>', { noremap = true, silent = true })
 
 
 -- windows management
