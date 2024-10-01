@@ -1,0 +1,12 @@
+- comment all the file or section
+- add and remove tabs button
+- better comment color 
+- substituition 
+- surround 
+- trouble
+- linting
+- git integration
+- native terminal 
+
+- rethink keybinds
+
