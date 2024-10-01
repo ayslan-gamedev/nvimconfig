@@ -10,7 +10,7 @@ DONE - add and remove tabs button (shift + <>)
 DONE - trouble
 - linting
 
-- git integration
+DONE - git integration
 - native terminal 
 
 - rethink keybinds
