@@ -1,10 +1,15 @@
-- comment all the file or section
-- add and remove tabs button
+DONE - comment all the file or section
+DONE - add and remove tabs button (shift + <>)
+
 - better comment color 
+
 - substituition 
+
 - surround 
-- trouble
+
+DONE - trouble
 - linting
+
 - git integration
 - native terminal 
 
