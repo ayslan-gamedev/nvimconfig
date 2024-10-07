@@ -1,7 +1,10 @@
 return {
-  "rcarriga/nvim-notify",
+  "akinsho/bufferline.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  version = "*",
   opts = {
-    stages = "fade",
-    background_colour = "#000000",
+    options = {
+      mode = "tabs",
+    },
   },
 }
