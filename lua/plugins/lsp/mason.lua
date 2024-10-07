@@ -1,17 +1,12 @@
 return {
   "williamboman/mason.nvim",
   dependencies = {
-    -- to use lsp implementations
-    "williamboman/mason-lspconfig.nvim",
-
-    -- to auto formatter
     "stevearc/conform.nvim",
-
-    -- to linter
     "mfussenegger/nvim-lint",
+    "williamboman/mason-lspconfig.nvim",
   },
   config = function()
-    -- stup mason
+    -- Setup mason
     require("mason").setup({
       ui = {
         icons = {
@@ -22,16 +17,47 @@ return {
       }
     })
 
-    -- setup conform
+    -- Setup conform
     require("conform").setup({
       formatters_by_ft = {
-        html = { "prettier" }
+        html = { "prettier" },
+        css = { "prettier" },
+        lua = { "stylua" },
+        python = { "black", "isort" },
+        javascript = { "eslint_d" },
+        c = { "clang-format" },   -- Adicionado para C
+        cpp = { "clang-format" }, -- Adicionado para C++
       },
       format_on_save = {
-        -- These options will be passed to conform.format()
         timeout_ms = 500,
         lsp_format = "fallback",
       },
     })
-  end
+
+    -- Setup nvim-lint
+    require("lint").linters_by_ft = {
+      lua = { "luacheck" },
+      python = { "flake8", "pylint" },
+      javascript = { "eslint" },
+      c = { "clang-tidy" },   -- Adicionado para C
+      cpp = { "clang-tidy" }, -- Adicionado para C++
+    }
+
+    require("mason-lspconfig").setup({
+      -- list of servers for mason to install
+      ensure_installed = {
+        "tsserver",
+        "html",
+        "cssls",
+        "tailwindcss",
+        "svelte",
+        "lua_ls",
+        "graphql",
+        "emmet_ls",
+        "prismals",
+        "pyright",
+        "clangd",
+      },
+    })
+  end,
 }
